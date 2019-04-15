@@ -33,4 +33,21 @@ describe('testing routes', () => {
         });
       });
   });
+  it('returns all profiles', () => {
+    return request(app)
+      .post('/profiles')
+      .send({
+        name: 'bonnie',
+        favoriteCharacter: 'Bender'
+      })
+      .then(() => {
+        return request(app)
+          .get('/profiles');
+      })
+      .then(res => {
+        expect(res.body).toHaveLength(1);
+      });
+  });
+
+  
 });
