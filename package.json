@@ -1,13 +1,16 @@
 {
   "name": "mob-futurama-profile",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose",
+    "test:watch": "npm run test -- --watch",
+    "start": "node server.js",
+    "start:watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +24,15 @@
   },
   "homepage": "https://github.com/alchemy-fullstack-js-spring-2019/mob-futurama-profile#readme",
   "dependencies": {
+    "express": "^4.16.4",
     "mkdirp": "^0.5.1",
     "uuid": "^3.3.2"
+  },
+  "description": "",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "jest": "^24.7.1",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2"
   }
 }
