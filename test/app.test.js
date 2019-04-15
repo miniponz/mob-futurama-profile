@@ -13,24 +13,24 @@ describe('api call', () => {
 });
 
 
-// describe('testing routes', () => {
-//   afterEach(() => {
-//     return Profile.drop();
-//   });
-//   it('creates a new profile', () => {
-//     return request(app)
-//       .post('/profiles')
-//       .send({
-//         name: 'bonnie',
-//         favoriteCharacter: 'Bender'
-//       })
-//       .then(res => {
-//         expect(res.body).toEqual({
-//           name: 'bonnie',
-//           favoriteCharacter: 'Bender',
-//           tagline: expect.any(String),
-//           _id: expect.any(String)
-//         });
-//       });
-//   });
-// });
+describe('testing routes', () => {
+  afterEach(() => {
+    return Profile.drop();
+  });
+  it('creates a new profile', () => {
+    return request(app)
+      .post('/profiles')
+      .send({
+        name: 'bonnie',
+        favoriteCharacter: 'Bender'
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          name: 'bonnie',
+          favoriteCharacter: 'Bender',
+          tagline: expect.any(String),
+          _id: expect.any(String)
+        });
+      });
+  });
+});
