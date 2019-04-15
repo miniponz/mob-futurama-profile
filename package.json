@@ -26,6 +26,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "mkdirp": "^0.5.1",
+    "superagent": "^5.0.2",
     "uuid": "^3.3.2"
   },
   "description": "",
