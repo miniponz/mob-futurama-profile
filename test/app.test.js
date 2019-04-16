@@ -69,7 +69,33 @@ describe('testing routes', () => {
           _id: expect.any(String)
         });
       });
-
-      
   });
+
+
+  it('updates favorite character by profile id', () => {
+    return request(app)
+      .post('/profiles')
+      .send({
+        name: 'bonnie',
+        favoriteCharacter: 'Bender'
+      })
+      .then(res => res.body._id)
+      .then(id => {
+        return request(app)
+          .patch(`/profiles/${id}`)
+          .send({
+            favoriteCharacter: 'fry'
+          });
+      })
+      .then(res => {
+        expect(res.body.favoriteCharacter).toEqual('fry');
+        expect(res.body.tagline).toEqual(expect.any(String));
+      });
+
+  });
+
+
+
+
+
 });
