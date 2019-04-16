@@ -91,11 +91,16 @@ describe('testing routes', () => {
         expect(res.body.favoriteCharacter).toEqual('fry');
         expect(res.body.tagline).toEqual(expect.any(String));
       });
-
   });
-
-
-
-
-
+  it('deletes a profile by id', () => {
+    return Profile
+      .create({ name: 'cara', favoriteCharacter: 'bender' })
+      .then(createdProfile => {
+        return request(app)
+          .delete(createdProfile._id);
+      })
+      .then(res => {
+        expect(res.body).toEqual({ deleted: 1 });
+      });
+  });
 });
