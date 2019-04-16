@@ -49,5 +49,27 @@ describe('testing routes', () => {
       });
   });
 
-  
+  it('finds profile by id', () => {
+    return request(app)
+      .post('/profiles')
+      .send({
+        name: 'bonnie',
+        favoriteCharacter: 'Bender'
+      })
+      .then(res => res.body._id)
+      .then(id => {
+        return request(app)
+          .get(`/profiles/${id}`);
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          name: 'bonnie',
+          favoriteCharacter: 'Bender',
+          tagline: expect.any(String),
+          _id: expect.any(String)
+        });
+      });
+
+      
+  });
 });
