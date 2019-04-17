@@ -97,7 +97,7 @@ describe('testing routes', () => {
       .create({ name: 'cara', favoriteCharacter: 'bender' })
       .then(createdProfile => {
         return request(app)
-          .delete(createdProfile._id);
+          .delete(`/profiles/${createdProfile._id}`);
       })
       .then(res => {
         expect(res.body).toEqual({ deleted: 1 });
